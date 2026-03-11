@@ -1,8 +1,32 @@
 'use client';
 
+import { motion, Variants } from 'framer-motion';
+
 interface ProjectsSectionProps {
   id: string;
 }
+
+// Animation variants
+const containerVariant: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariant: Variants = {
+  hidden: { y: 30, opacity: 0, scale: 0.95 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { type: 'spring', stiffness: 80, damping: 15 },
+  },
+};
 
 export default function ProjectsSection({ id }: ProjectsSectionProps) {
   // SVG icons data
@@ -43,163 +67,134 @@ export default function ProjectsSection({ id }: ProjectsSectionProps) {
 
   const projects = [
     {
-      title: 'NovaOrbit - Shopping App',
-      description: 'Comprehensive full-stack shopping application featuring mobile app, admin dashboard for data management, and Node.js Express API with MongoDB integration. Developed with AI-assisted coding for enhanced efficiency and innovation.',
-      technologies: ['React Native', 'Node.js', 'Express.js', 'MongoDB', 'React', 'AI-Assisted Development', 'Mobile App', 'Admin Dashboard'],
-      impact: 'Delivered complete e-commerce solution with AI-powered development approach, achieving significant development efficiency improvements through intelligent code generation.',
-      color: 'blue',
-      url: 'https://github.com/arunnitsan/NovaOrbit'
-    },
-    {
-      title: 'T3AC - TYPO3 AI Chatbot',
-      description: 'Native TYPO3 AI Chatbot extension (T3AC) providing 24/7 support with instant engagement and AI automation. First-ever TYPO3 AI Chatbot from TYPO3 AI Universe.',
-      technologies: ['TYPO3', 'AI Chatbot', 'AI Models Integration', 'Shadow-dom Templating', 'Backend Demonstration'],
-      impact: 'Delivered round-the-clock customer support with instant, relevant responses, reducing response times and improving user engagement.',
-      color: 'yellow',
-      url: 'https://t3planet.de/en/t3ac-typo3-extension'
-    },
-    {
-      title: 'T3AI - TYPO3 AI Assistant',
-      description: 'Complete TYPO3 AI Assistant extension for generating AI content and starting content creation in minutes. Part of T3Planet\'s AI Universe ecosystem.',
-      technologies: ['TYPO3', 'AI Content Generation', 'Content Management', 'AI Integration', 'TYPO3 Extensions', 'AI Models Integration', 'Backend Design'],
-      impact: 'Enabled rapid content creation and AI-powered content generation within TYPO3 CMS, streamlining content workflows.',
-      color: 'pink',
-      url: 'https://t3planet.de/en/t3ai-typo3-extension'
-    },
-    {
       title: 'T3Planet - TYPO3 Shop',
       description: 'E-commerce platform showcasing deep integration and custom development within the TYPO3 CMS ecosystem. Official T3Planet website with comprehensive TYPO3 solutions.',
-      technologies: ['TYPO3', 'E-commerce', 'Custom Extensions', 'PHP', 'TYPO3 Templates', 'Frontend Development', 'Backend Development'],
+      technologies: ['TYPO3', 'E-commerce', 'Custom Extensions', 'PHP', 'TYPO3 Templates', 'Frontend Development', 'Backend Administration'],
       impact: 'Demonstrated advanced TYPO3 CMS capabilities in e-commerce solutions and served as flagship platform for T3Planet services.',
       color: 'indigo',
       url: 'https://t3planet.de/'
     },
     {
-      title: 'HDNET Client Project',
-      description: 'Large-scale enterprise client project for HDNET, showcasing complex frontend architecture and extensive use of the TYPO3 system for enterprise-level solutions.',
-      technologies: ['Enterprise', 'TYPO3', 'Complex Architecture', 'Large-scale', 'Client Solutions', 'Frontend Development', 'Backend Development', 'Git Collaboration'],
-      impact: 'Delivered enterprise-level solution with complex frontend architecture for HDNET\'s digital presence.',
-      color: 'cyan',
-      url: 'https://hdnet.de/'
+      title: 'Accesstive Live Audit Tool',
+      description: 'AI-powered live accessibility audit tool providing real-time WCAG 2.1/2.2 compliance scanning and detailed accessibility reports for websites.',
+      technologies: ['AI Audits', 'WCAG 2.0/2.1/2.2', 'React', 'TypeScript', 'Axe-Core API Integration', 'Shadow-dom Templating'],
+      impact: 'Delivered instant accessibility compliance reports with AI-powered scanning, establishing continuous compliance for clients.',
+      color: 'emerald',
+      url: 'https://accesstive.com/free-accessibility-checker'
     },
     {
       title: 'Accesstive Accessibility Widget',
-      description: 'Mission-critical accessibility audit widget built with Vite and TypeScript for real-time WCAG compliance monitoring and reporting on client websites.',
-      technologies: ['Vite', 'TypeScript', 'WCAG', 'Real-time Monitoring', 'Accessibility', 'Frontend Development', 'Backend Development', 'Git Collaboration', 'Automatic Alt Text Generation'],
-      impact: 'Enabled real-time accessibility compliance monitoring across multiple client sites, improving web accessibility standards.',
+      description: 'Mission-critical accessibility widget built with Vite and TypeScript allowing users to adjust accessibility profiles and UI live on client websites.',
+      technologies: ['Vite', 'TypeScript', 'WCAG', 'Real-time UI Overrides', 'Frontend Development', 'Automatic Alt Text Generation'],
+      impact: 'Enabled powerful live accessibility compliance rendering seamlessly across thousands of active sessions.',
       color: 'orange',
       url: 'https://accesstive.com/'
     },
     {
-      title: 'Accesstive Live Audit Tool',
-      description: 'AI-powered live accessibility audit tool providing real-time WCAG compliance scanning and detailed accessibility reports for websites. Features comprehensive disability-specific testing and instant issue detection.',
-      technologies: ['AI Audits', 'WCAG 2.0/2.1/2.2', 'Real-time Scanning', 'Accessibility Testing', 'Live Monitoring', 'Frontend Development', 'Backend Development', 'Git Collaboration', 'Axe-Core API Integration', 'Shadow-dom Templating'],
-      impact: 'Delivered instant accessibility compliance reports with AI-powered scanning, enabling real-time accessibility monitoring and compliance verification.',
-      color: 'emerald',
-      url: 'https://accesstive.com/free-ai-audit?website=https://t3planet.de/'
+      title: 'T3AC - TYPO3 AI Chatbot',
+      description: 'Native TYPO3 AI Chatbot extension providing 24/7 support with instant engagement. First-ever TYPO3 AI Chatbot from TYPO3 AI Universe.',
+      technologies: ['TYPO3', 'AI Models Integration', 'Shadow-dom Templating', 'LLM Prompt Engineering'],
+      impact: 'Delivered round-the-clock customer support with instant, relevant responses, reducing typical response times significantly.',
+      color: 'yellow',
+      url: 'https://t3planet.de/en/t3ac-typo3-extension'
     },
     {
-      title: 'Accesstive Dashboard',
-      description: 'Central data dashboard for sophisticated management and long-term monitoring of accessibility metrics across multiple web properties with AI-powered audit capabilities.',
-      technologies: ['Dashboard', 'Data Visualization', 'Accessibility Metrics', 'Monitoring', 'AI Audits', 'Frontend Development', 'Backend Development', 'Git Collaboration', 'User Management System'],
-      impact: 'Centralized accessibility monitoring and management across multiple web properties with comprehensive reporting.',
-      color: 'teal',
-      url: 'https://dashboard.accesstive.com/app/'
+      title: 'T3AI - TYPO3 AI Assistant',
+      description: 'Complete TYPO3 AI Assistant extension mapping AI to Backend tasks, enabling rapid content creation and generation directly in the Editor.',
+      technologies: ['TYPO3', 'AI Content Generation', 'Backend Module Design', 'AI Models Integration'],
+      impact: 'Accelerated editor workflows resulting in drastically faster content lifecycle publishing in TYPO3.',
+      color: 'pink',
+      url: 'https://t3planet.de/en/t3ai-typo3-extension'
+    },
+    {
+      title: 'NovaOrbit - Shopping App',
+      description: 'Comprehensive full-stack shopping application featuring mobile app, admin dashboard for data management, and Node.js Express API with MongoDB integration.',
+      technologies: ['React Native', 'Node.js', 'Express.js', 'MongoDB', 'React', 'AI-Assisted Development'],
+      impact: 'Delivered complete e-commerce solution with AI-powered development approach, showcasing mobile app proficiency.',
+      color: 'blue',
+      url: 'https://github.com/ab-solanki/NovaOrbit'
     }
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      blue: 'hover:border-blue-400/50 hover:shadow-blue-500/20',
-      green: 'hover:border-green-400/50 hover:shadow-green-500/20',
-      purple: 'hover:border-purple-400/50 hover:shadow-purple-500/20',
-      yellow: 'hover:border-yellow-400/50 hover:shadow-yellow-500/20',
-      pink: 'hover:border-pink-400/50 hover:shadow-pink-500/20',
-      indigo: 'hover:border-indigo-400/50 hover:shadow-indigo-500/20',
-      cyan: 'hover:border-cyan-400/50 hover:shadow-cyan-500/20',
-      orange: 'hover:border-orange-400/50 hover:shadow-orange-500/20',
-      emerald: 'hover:border-emerald-400/50 hover:shadow-emerald-500/20',
-      teal: 'hover:border-teal-400/50 hover:shadow-teal-500/20'
-    };
-    return colors[color as keyof typeof colors] || colors.blue;
-  };
-
-  const getIconColor = (color: string) => {
-    const colors = {
-      blue: 'text-blue-400',
-      green: 'text-green-400',
-      purple: 'text-purple-400',
-      yellow: 'text-yellow-400',
-      pink: 'text-pink-400',
-      indigo: 'text-indigo-400',
-      cyan: 'text-cyan-400',
-      orange: 'text-orange-400',
-      emerald: 'text-emerald-400',
-      teal: 'text-teal-400'
-    };
-    return colors[color as keyof typeof colors] || colors.blue;
-  };
-
   return (
     <section id={id} className="py-20 relative z-10" suppressHydrationWarning={true}>
-      <div className="text-center mb-16">
+      <motion.div 
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="text-center mb-16"
+      >
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Project Portfolio
           </span>
         </h2>
         <p className="text-xl text-white/80 max-w-3xl mx-auto">
-          A comprehensive portfolio showcasing 10 impactful projects demonstrating versatility across full-stack development, AI integration, mobile applications, e-commerce solutions, and accessibility tools.
+          A comprehensive portfolio showcasing my most impactful projects spanning complex TYPO3 integrations, powerful web accessibility platforms, AI automation tools, and full-stack mobile e-commerce solutions.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div 
+        variants={containerVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
         {projects.map((project, index) => (
-          <div 
-            key={index} 
-            className={`group bg-white/10 backdrop-blur-xl p-8 rounded-2xl border border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl flex flex-col h-full ${getColorClasses(project.color)}`}
+          <motion.div
+            key={index}
+            variants={cardVariant}
+            whileHover={{ y: -5 }}
+            className="group glass-card p-8 border-slate-800 hover:border-accent-gold/30 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
           >
+            {/* Subtle Gold Accent Top */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
             {/* Project Icon */}
-            <div className={`text-4xl mb-6 group-hover:scale-110 transition-transform duration-300 ${getIconColor(project.color)}`}>
+            <motion.div 
+              className="text-4xl mb-6 relative z-10 text-accent-gold/80"
+            >
               {(() => {
                 const iconData = projectIcons[project.title as keyof typeof projectIcons];
                 if (!iconData) return null;
-                
+
                 return (
-                  <svg 
-                    className="w-10 h-10" 
-                    fill="currentColor" 
+                  <svg
+                    className="w-10 h-10 drop-shadow-lg"
+                    fill="currentColor"
                     viewBox={iconData.viewBox}
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path 
-                      fillRule="evenodd" 
-                      d={iconData.path} 
-                      clipRule="evenodd" 
+                    <path
+                      fillRule="evenodd"
+                      d={iconData.path}
+                      clipRule="evenodd"
                     />
                   </svg>
                 );
               })()}
-            </div>
+            </motion.div>
 
             {/* Project Title */}
-            <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
+            <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300 relative z-10">
               {project.title}
             </h3>
 
             {/* Project Description */}
-            <p className="text-white/80 mb-6 leading-relaxed flex-grow">
+            <p className="text-white/80 mb-6 leading-relaxed flex-grow relative z-10">
               {project.description}
             </p>
 
             {/* Technologies */}
-            <div className="mb-6">
+            <div className="mb-6 relative z-10">
               <h4 className="text-white font-semibold mb-3">Technologies:</h4>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, idx) => (
-                  <span 
-                    key={idx} 
-                    className="px-3 py-1 bg-white/10 text-white/80 text-sm rounded-full border border-white/20"
+                  <span
+                    key={idx}
+                    className="px-3 py-1 bg-white/10 text-white/80 text-sm rounded-full border border-white/20 hover:bg-white/20 transition-colors cursor-default"
                   >
                     {tech}
                   </span>
@@ -208,30 +203,32 @@ export default function ProjectsSection({ id }: ProjectsSectionProps) {
             </div>
 
             {/* Impact and Link - Always at bottom */}
-            <div className="border-t border-white/20 pt-4 mt-auto">
+            <div className="border-t border-white/20 pt-4 mt-auto relative z-10">
               <h4 className="text-white font-semibold mb-2">Impact:</h4>
               <p className="text-white/70 text-sm leading-relaxed mb-4">
                 {project.impact}
               </p>
-              
+
               {/* Project Link - Always at the very bottom */}
               {project.url && (
-                <a 
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="inline-flex items-center px-5 py-2.5 bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-sm font-semibold rounded-lg hover:bg-accent-gold/20 transition-all duration-300 group/btn"
                 >
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  <span className="relative z-10">View Enterprise Case</span>
+                  <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                  View Project
-                </a>
+                </motion.a>
               )}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

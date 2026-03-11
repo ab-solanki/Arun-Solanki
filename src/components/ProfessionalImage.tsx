@@ -35,8 +35,9 @@ export default function ProfessionalImage({ className = '', size = 'xl' }: Profe
         <div className="absolute inset-0 rounded-full shadow-inner border border-white/10"></div>
         
         <Image
-          src="/arun-image.jpg"
-          alt="Arun Solanki - Frontend Team Leader"
+          src="/arun-solanki-frontend-team-lead.jpg"
+          alt="Arun Solanki - Senior Frontend Developer & Team Leader"
+          title="Arun Solanki - Senior Frontend Developer & Team Leader"
           width={288}
           height={288}
           className={`object-cover w-full h-full transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} filter contrast-110 brightness-105`}

@@ -25,15 +25,9 @@ export default function EducationContactSection({ id }: EducationContactSectionP
   const certifications = [
     {
       title: 'Shining Star of the Year',
-      issuer: 'NITSAN TECHNOLOGY',
+      issuer: 'NITSAN',
       year: '2023',
-      description: 'Recognized for exceptional leadership and project delivery excellence.'
-    },
-    {
-      title: 'Best Performance of the Month',
-      issuer: 'NITSAN TECHNOLOGY',
-      year: 'June 2024',
-      description: 'Awarded for outstanding performance and dedication in project delivery during June 2024.'
+      description: 'Award recognized for exceptional leadership, frontend development innovation, and consistent project delivery excellence.'
     }
   ];
 

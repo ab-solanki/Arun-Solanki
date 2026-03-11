@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Optimize for production
   output: 'standalone',
+  trailingSlash: true,
   
   // Enable compression
   compress: true,
@@ -22,7 +23,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/:path*',
         headers: [
           {
             key: 'X-Frame-Options',
@@ -35,6 +36,10 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow',
           },
         ],
       },
